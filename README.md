@@ -9,5 +9,5 @@ Slightly tweaked to stand alone.
 OSX only. Add OpenAL framework
 
 
-https://github.com/borg/ofxOpenALSoundPlayer
+
 /Andreas
