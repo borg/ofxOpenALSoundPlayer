@@ -65,14 +65,50 @@
 //virtual bool isLoaded() = 0;
 //virtual float getVolume() = 0;
 
+
+
+/*
+
+virtual bool load(string fileName, bool stream = false)=0;
+virtual void unload()=0;
+virtual void play() = 0;
+virtual void stop() = 0;
+
+virtual void setVolume(float vol) = 0;
+virtual void setPan(float vol) = 0; // -1 = left, 1 = right
+virtual void setSpeed(float spd) = 0;
+virtual void setPaused(bool bP) = 0;
+virtual void setLoop(bool bLp) = 0;
+virtual void setMultiPlay(bool bMp) = 0;
+virtual void setPosition(float pct) = 0; // 0 = start, 1 = end;
+virtual void setPositionMS(int ms) = 0;
+
+virtual float getPosition() const = 0;
+virtual int getPositionMS() const = 0;
+virtual bool isPlaying() const = 0;
+virtual float getSpeed() const = 0;
+virtual float getPan() const = 0;
+virtual bool isLoaded() const = 0;
+virtual float getVolume() const = 0;
+*/
+
+
+
 // --------------------- player functions:
 class ofxOpenALSoundPlayer : public ofBaseSoundPlayer, public ofThread {
 
 	public:
 
 		ofxOpenALSoundPlayer();
-		virtual ~ofxOpenALSoundPlayer();
-
+        ~ofxOpenALSoundPlayer();
+    
+        bool load(string fileName, bool stream = false){
+            loadSound(fileName,stream);
+        };
+        void unload(){
+            unloadSound();
+        };
+    
 		bool loadSound(string fileName, bool stream = false);
 		void unloadSound();
 		void play();
@@ -87,16 +123,17 @@ class ofxOpenALSoundPlayer : public ofBaseSoundPlayer, public ofThread {
 		void setPosition(float pct); // 0 = start, 1 = end;
 	    void setPositionMS(int ms);
     
-		float getPosition();
-	    int getPositionMS();
-		bool getIsPlaying();
-		float getSpeed();
-		float getPan();
-	    float getVolume();
-	    bool isLoaded();
-		bool getIsPaused();
-		float getDuration();
-		int getNumChannels();
+		float getPosition() const;
+	    int getPositionMS() const;
+		bool getIsPlaying() const;
+		float getSpeed() const;
+		float getPan() const;
+	    float getVolume() const;
+	    bool isLoaded() const;
+        bool isPlaying() const;
+		bool getIsPaused() const;
+		float getDuration() const;
+		int getNumChannels() const;
     
 		static void initialize();
 		static void close();

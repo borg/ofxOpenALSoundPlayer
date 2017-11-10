@@ -593,7 +593,7 @@ void ofxOpenALSoundPlayer::unloadSound(){
 }
 
 //------------------------------------------------------------
-bool ofxOpenALSoundPlayer::getIsPlaying(){
+bool ofxOpenALSoundPlayer::getIsPlaying() const{
 	if(sources.empty()) return false;
 	if(isStreaming) return isThreadRunning();
 	ALint state;
@@ -604,9 +604,14 @@ bool ofxOpenALSoundPlayer::getIsPlaying(){
 	}
 	return playing;
 }
+//alias
+bool ofxOpenALSoundPlayer::isPlaying() const{
+    return getIsPlaying();
+}
+
 
 //------------------------------------------------------------
-bool ofxOpenALSoundPlayer::getIsPaused(){
+bool ofxOpenALSoundPlayer::getIsPaused() const{
 	if(sources.empty()) return false;
 	ALint state;
 	bool paused=true;
@@ -618,20 +623,20 @@ bool ofxOpenALSoundPlayer::getIsPaused(){
 }
 
 //------------------------------------------------------------
-float ofxOpenALSoundPlayer::getSpeed(){
+float ofxOpenALSoundPlayer::getSpeed() const{
 	return speed;
 }
 
 //------------------------------------------------------------
-float ofxOpenALSoundPlayer::getPan(){
+float ofxOpenALSoundPlayer::getPan() const{
 	return pan;
 }
 
-float ofxOpenALSoundPlayer::getDuration(){
+float ofxOpenALSoundPlayer::getDuration() const{
 	return duration;
 }
 
-int ofxOpenALSoundPlayer::getNumChannels(){
+int ofxOpenALSoundPlayer::getNumChannels() const{
 	return channels;
 }
 
@@ -652,14 +657,17 @@ void ofxOpenALSoundPlayer::setVolume(float vol){
 }
 
 //------------------------------------------------------------
-float ofxOpenALSoundPlayer::getVolume(){
+float ofxOpenALSoundPlayer::getVolume() const{
 	return volume;    
 }
 
 //------------------------------------------------------------
-bool ofxOpenALSoundPlayer::isLoaded(){
+bool ofxOpenALSoundPlayer::isLoaded() const{
     return bLoadedOk;
 }
+
+
+
 
 //------------------------------------------------------------
 void ofxOpenALSoundPlayer::setPosition(float pct){
@@ -689,7 +697,7 @@ void ofxOpenALSoundPlayer::setPositionMS(int ms){
 }
 
 //------------------------------------------------------------
-float ofxOpenALSoundPlayer::getPosition(){
+float ofxOpenALSoundPlayer::getPosition() const{
 	if(duration==0) return 0;
 	if(sources.empty()) return 0;
 	float pos;
@@ -712,7 +720,7 @@ float ofxOpenALSoundPlayer::getPosition(){
 }
 
 //------------------------------------------------------------
-int ofxOpenALSoundPlayer::getPositionMS(){
+int ofxOpenALSoundPlayer::getPositionMS() const{
 	if(duration==0) return 0;
 	if(sources.empty()) return 0;
 	int pos;
