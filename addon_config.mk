@@ -86,8 +86,8 @@ android/armeabi:
 android/armeabi-v7a:	
 
 osx:
-	ADDON_LDFLAGS = -F/Library/Frameworks -framework OpenFL
-	ADDON_INCLUDES += /Library/Frameworks/OpenFL.framework/Headers
+	ADDON_LDFLAGS = -F/Library/Frameworks -framework OpenAL
+	ADDON_INCLUDES += /Library/Frameworks/OpenAL.framework/Headers
 
     
 ios:
